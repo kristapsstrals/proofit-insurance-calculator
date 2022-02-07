@@ -25,12 +25,13 @@ public class PremiumCalculatorController {
     public ResponseEntity<PremiumCalculationResponseDto> calculatePremium(
             @RequestBody Policy policy) {
         try {
-            var result = calculator.calculate(policy);
-            return ResponseEntity.ok(new PremiumCalculationResponseDto(result));
+            var insurancePremium = calculator.calculate(policy);
+            return ResponseEntity.ok(new PremiumCalculationResponseDto(insurancePremium));
         } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
-                    .body(new PremiumCalculationResponseDto(e.getMessage()));
+                    .body(new PremiumCalculationResponseDto(
+                            "Failed to process request. Please check the request payload and try again."));
         }
     }
 
