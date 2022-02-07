@@ -5,7 +5,7 @@ import proofit.insurance.calculator.domain.Policy;
 
 public class PremiumCalculator {
 
-    public BigDecimal calculate(Policy policy) throws Exception {
-        throw new Exception("Not implemented");
+    public BigDecimal calculate(Policy policy) {
+        throw new UnsupportedOperationException();
     }
 }
