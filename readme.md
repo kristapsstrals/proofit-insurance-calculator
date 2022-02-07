@@ -68,3 +68,13 @@ response:
   "insurancePremium": 4.82
 }
 ```
+
+## Implementation
+
+Java app written using Spring Boot + Gradle for builds and JUnit for unit tests.
+
+Unit tests cover the two test cases for acceptance criteria.
+
+App has an HTTP entry point and HTTP Post requests with a JSON payload can be used to interact with the app. The HTTP request returns a JSON response with either the calculated insurance premium or an error message.
+
+In addition to this, there is an OpenAPI UI (Swagger) for additional object(class) and enum documentation vailable at the application web address root `http://<host>:8080`.
