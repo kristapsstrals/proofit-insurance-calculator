@@ -32,28 +32,31 @@ public class PremiumCalculatorTests {
      */
     @Test
     void Test_CanCalculatePremium_OneObjectTwoSubObjects() {
+        var tv = new PolicySubObject(
+                "TV",
+                new BigDecimal(100.00),
+                RiskType.FIRE);
+
+        var pc = new PolicySubObject(
+                "PC",
+                new BigDecimal(8.00),
+                RiskType.THEFT);
+
+        var home = new PolicyObject(
+                "Home",
+                new ArrayList<PolicySubObject>() {
+                    {
+                        add(tv);
+                        add(pc);
+                    }
+                });
+
         var policy = new Policy(
                 "TEST_POLICY_NUMBER",
                 PolicyStatus.APPROVED,
                 new ArrayList<PolicyObject>() {
                     {
-                        add(
-                                new PolicyObject(
-                                        "Home",
-                                        new ArrayList<PolicySubObject>() {
-                                            {
-                                                add(
-                                                        new PolicySubObject(
-                                                                "TV",
-                                                                new BigDecimal(100.00),
-                                                                RiskType.FIRE));
-                                                add(
-                                                        new PolicySubObject(
-                                                                "PC",
-                                                                new BigDecimal(8.00),
-                                                                RiskType.THEFT));
-                                            }
-                                        }));
+                        add(home);
                     }
                 });
 
@@ -73,62 +76,74 @@ public class PremiumCalculatorTests {
      */
     @Test
     void Test_CanCalculatePremium_SumBasedTest() {
+        // first policy object
+        var tv = new PolicySubObject(
+                "TV",
+                new BigDecimal(200.00),
+                RiskType.FIRE);
+
+        var pc = new PolicySubObject(
+                "PC",
+                new BigDecimal(50.00),
+                RiskType.THEFT);
+
+        var home = new PolicyObject(
+                "Home",
+                new ArrayList<PolicySubObject>() {
+                    {
+                        add(tv);
+                        add(pc);
+                    }
+                });
+
+        // second policy object
+        var printer = new PolicySubObject(
+                "Printer",
+                new BigDecimal(200.00),
+                RiskType.FIRE);
+
+        var projector = new PolicySubObject(
+                "Projector",
+                new BigDecimal(50.00),
+                RiskType.THEFT);
+
+        var office = new PolicyObject(
+                "Office",
+                new ArrayList<PolicySubObject>() {
+                    {
+                        add(printer);
+                        add(projector);
+                    }
+                });
+
+        // third policy object
+        var car = new PolicySubObject(
+                "Car",
+                new BigDecimal(100.00),
+                RiskType.FIRE);
+
+        var instruments = new PolicySubObject(
+                "Instruments",
+                new BigDecimal(2.51),
+                RiskType.THEFT);
+
+        var garage = new PolicyObject(
+                "Garage",
+                new ArrayList<PolicySubObject>() {
+                    {
+                        add(car);
+                        add(instruments);
+                    }
+                });
+
         var policy = new Policy(
                 "TEST_POLICY_NUMBER",
                 PolicyStatus.APPROVED,
                 new ArrayList<PolicyObject>() {
                     {
-                        add(
-                                new PolicyObject(
-                                        "Home",
-                                        new ArrayList<PolicySubObject>() {
-                                            {
-                                                add(
-                                                        new PolicySubObject(
-                                                                "TV",
-                                                                new BigDecimal(200.00),
-                                                                RiskType.FIRE));
-                                                add(
-                                                        new PolicySubObject(
-                                                                "PC",
-                                                                new BigDecimal(50.00),
-                                                                RiskType.THEFT));
-                                            }
-                                        }));
-                        add(
-                                new PolicyObject(
-                                        "Work",
-                                        new ArrayList<PolicySubObject>() {
-                                            {
-                                                add(
-                                                        new PolicySubObject(
-                                                                "TV",
-                                                                new BigDecimal(200.00),
-                                                                RiskType.FIRE));
-                                                add(
-                                                        new PolicySubObject(
-                                                                "PC",
-                                                                new BigDecimal(50.00),
-                                                                RiskType.THEFT));
-                                            }
-                                        }));
-                        add(
-                                new PolicyObject(
-                                        "Some Thid Object",
-                                        new ArrayList<PolicySubObject>() {
-                                            {
-                                                add(
-                                                        new PolicySubObject(
-                                                                "TV",
-                                                                new BigDecimal(100.00),
-                                                                RiskType.FIRE));
-                                                add(
-                                                        new PolicySubObject(
-                                                                "PC",
-                                                                new BigDecimal(2.51),
-                                                                RiskType.THEFT));
-                                            }
-                                        }));
+                        add(home);
+                        add(office);
+                        add(garage);
                     }
                 });
 
