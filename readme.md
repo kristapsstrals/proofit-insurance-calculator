@@ -1,5 +1,9 @@
 # Insurance Calculator
 
+Live demo available [here](http://65.108.144.207:8080/)
+
+---
+
 App used to calculate premium for an insurance policy.
 
 To start the app, use `./gradlew bootRun` command. The app exposes an `HTTP POST` endpoint for policy premium calculation on `http://<host>:8080/premium/calculate`. Example json payload:
