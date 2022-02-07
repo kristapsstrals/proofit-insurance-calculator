@@ -1,6 +1,6 @@
 # Insurance Calculator
 
-Live demo available [here](http://65.108.144.207:8080/)
+Live demo available [here](http://proofit.kriss.tech:8080/)
 
 ---
 
